@@ -8,8 +8,3 @@
   <%= will_paginate @customers %>
 </div>
 
-<%= content_for :sidebar do %>
-
-  <li><%= link_to "#{casein_show_icon "plus-sign"}Add a new customer".html_safe, new_casein_customer_path %></li>
-
-<% end %>
