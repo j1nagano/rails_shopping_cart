@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <nav>
+      <% if customer_signed_in? %>
+        <%= link_to 'プロフィール変更', edit_customer_registration_path %>
+        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
+      <% else %>
+        <%= link_to '会員登録', new_customer_registration_path %>
+        <%= link_to 'ログイン', new_customer_session_path %>
+      <% end %>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

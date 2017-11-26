@@ -2,6 +2,7 @@
 
 module Casein
   class CustomersController < Casein::CaseinController
+    skip_before_action :authenticate_customer!
     ## optional filters for defining usage according to Casein::AdminUser access_levels
     # before_action :needs_admin, except: [:action1, :action2]
     # before_action :needs_admin_or_current_user, only: [:action1, :action2]
