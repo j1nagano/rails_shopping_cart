@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
+
 #Casein routes
 namespace :casein do
     resources :items
