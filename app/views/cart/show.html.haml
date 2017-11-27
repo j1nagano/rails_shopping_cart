@@ -1,0 +1,45 @@
+%h1 カート
+
+%table
+  %thead
+    %tr
+      %th 商品名
+      %th 価格
+      %th 数量
+      %th
+
+  %tbody
+    - @cart_items.each do |cart_item|
+      %tr
+        %form{:action => "/cart/update_item", :method => "post"}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          = hidden_field_tag :item_id, cart_item.item_id
+          %td= cart_item.item.name
+          %td= number_to_currency( cart_item.item.price, :precision => 0, :unit => '￥' )
+          %td
+            %select{:name => 'quantity'}
+              - 10.times do |element|
+                %option{:value=>element, :selected => (element == cart_item.quantity)}
+                  #{element}
+          %td
+            %input{:type => "submit", :value => "変更する"}
+
+%br
+
+%table
+  %tbody
+    %tr
+      %th 小計
+      %td= number_to_currency( @cart.subtotal, :precision => 0, :unit => '￥' )
+    %tr
+      %th 送料
+      %td= number_to_currency( @cart.shipping_fee, :precision => 0, :unit => '￥' )
+    %tr
+      %th 代引き手数料
+      %td= number_to_currency( @cart.cash_on_delivery_fee, :precision => 0, :unit => '￥' )
+    %tr
+      %th 消費税
+      %td= number_to_currency( @cart.tax, :precision => 0, :unit => '￥' )
+    %tr
+      %th 合計
+      %td= number_to_currency( @cart.total, :precision => 0, :unit => '￥' )

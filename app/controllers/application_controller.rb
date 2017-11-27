@@ -1,7 +1,18 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_customer!, if: :need_authentication?
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  #helper_method :current_cart
+  def current_cart
+    if session[:cart_id]
+      cart = Cart.find(session[:cart_id])
+    else
+      cart = Cart.create
+      session[:cart_id] = cart.id
+    end
+    cart
+  end
 
   protected
     def configure_permitted_parameters

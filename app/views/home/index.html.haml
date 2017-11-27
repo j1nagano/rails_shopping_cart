@@ -3,17 +3,22 @@
 %table
   %thead
     %tr
-      %th 商品画像
       %th 商品名
       %th 説明文
       %th 価格
+      %th 数量
       %th
 
   %tbody
     - @items.each do |item|
       %tr
-        %td 画像
-        %td= item.name
-        %td= item.description
-        %td= number_to_currency( item.price, :precision => 0, :unit => '￥' )
-        %td= link_to 'カートに入れる', {:controller => 'home', :action => 'index'}, {:data => item}
+        %form{:action => "/cart/add_item", :method => "post"}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          = hidden_field_tag :item_id, item.id
+          %td= item.name
+          %td= item.description
+          %td= number_to_currency( item.price, :precision => 0, :unit => '￥' )
+          %td
+            %input{:name => "quantity", :size => "2", :value => "0"}
+          %td
+            %input{:type => "submit", :value => "カートに入れる"}
