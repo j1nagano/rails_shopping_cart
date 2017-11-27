@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'casein', '~>5.3.0'
 gem 'devise'
+gem 'haml-rails'
+gem 'erb2haml'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
