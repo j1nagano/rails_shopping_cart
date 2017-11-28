@@ -17,10 +17,7 @@
           %td= cart_item.item.name
           %td= number_to_currency( cart_item.item.price, :precision => 0, :unit => '￥' )
           %td
-            %select{:name => 'quantity'}
-              - 10.times do |element|
-                %option{:value=>element, :selected => (element == cart_item.quantity)}
-                  #{element}
+            %input{:name => "quantity", :size => "2", :value => cart_item.quantity}
           %td
             %input{:type => "submit", :value => "変更する"}
 
