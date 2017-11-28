@@ -8,7 +8,10 @@ class OrderItem < ApplicationRecord
     order_item.price    = cart_item.item.price
     order_item.item_id  = cart_item.item_id
     order_item.order_id = order_id
-    order_item.save
-    return order_item
+    if order_item.save
+      return order_item
+    else
+      return nil
+    end
   end
 end

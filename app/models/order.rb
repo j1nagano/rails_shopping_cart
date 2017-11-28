@@ -16,9 +16,14 @@ class Order < ApplicationRecord
     if order.save
       cart.cart_items.each do |cart_item|
         order_item = OrderItem.create_from_cart_item order.id, cart_item
+        if order_item.nil?
+          order.destroy
+          return nil
+        end
       end
+      return order
     else
-      #p "注文の作成に失敗しました。"
+      return nil
     end
   end
 end
