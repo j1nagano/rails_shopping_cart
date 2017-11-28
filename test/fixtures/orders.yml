@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subtotal: 1
+  total: 1
+  tax: 1
+  shipping_fee: 1
+  cash_on_delivery_fee: 1
+  customer: one
+
+two:
+  subtotal: 1
+  total: 1
+  tax: 1
+  shipping_fee: 1
+  cash_on_delivery_fee: 1
+  customer: two

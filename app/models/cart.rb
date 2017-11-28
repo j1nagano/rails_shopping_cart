@@ -11,7 +11,6 @@ class Cart < ApplicationRecord
 
   def shipping_fee
     sum_of_quantity = self.cart_items.reduce(0){ |sum, cart_item| sum + cart_item.quantity }
-    p sum_of_quantity
     ((sum_of_quantity / 5).floor + 1) * 600
   end
 
