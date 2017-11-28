@@ -16,6 +16,7 @@ class OrderController < ApplicationController
 
   def index
     @orders = Order.where( :customer_id => current_customer.id ).order("created_at desc")
+    @orders = [] if @orders.nil?
   end
 
   def address_change
