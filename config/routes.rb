@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  #get 'order/create'
+
+  #get 'order/address_confirm'
+
+  #get 'order/show'
+  resources :order, only: [:index,:create] do
+    collection do
+      get 'address_confirm'
+      post 'address_change'
+    end
+  end
+
   devise_for :customers
 
   resources :home, only: [:index]

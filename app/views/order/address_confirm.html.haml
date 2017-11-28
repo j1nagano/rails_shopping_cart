@@ -1,0 +1,19 @@
+%h1 送付先の入力
+
+
+%table
+  %tbody
+    %form{:action => "/order", :method => "post"}
+      = hidden_field_tag :authenticity_token, form_authenticity_token
+      %tr
+        %th お名前
+        %td
+          %input{:name => "name", :size => "40", :value => @customer_info.name }
+      %tr
+        %th 送信先住所
+        %td
+          %input{:name => "address", :size => "40", :value => @customer_info.address }
+      %tr
+        %th
+        %td
+          %input{:type => "submit", :value => "注文を確定する"}

@@ -3,8 +3,6 @@ class CartController < ApplicationController
 
   def show
     @cart = current_cart
-    @cart_items = @cart.cart_items
-    @cart_items = [] if @cart_items.nil?
   end
 
   def add_item

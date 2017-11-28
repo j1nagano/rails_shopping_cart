@@ -59,7 +59,7 @@ module Casein
     private
 
     def customer_params
-      params.require(:customer).permit(:mail, :address, :password)
+      params.require(:customer).permit(:mail, :address, :password, :name)
     end
   end
 end

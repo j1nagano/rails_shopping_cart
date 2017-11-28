@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  #helper_method :current_cart
   def current_cart
     if session[:cart_id]
       cart = Cart.find(session[:cart_id])
@@ -16,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   protected
     def configure_permitted_parameters
-      added_attrs = [ :email, :password, :password_confirmation, :address ]
+      added_attrs = [ :email, :password, :password_confirmation, :address, :name ]
       devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
       devise_parameter_sanitizer.permit :account_update, keys: added_attrs
       devise_parameter_sanitizer.permit :sign_in, keys: added_attrs

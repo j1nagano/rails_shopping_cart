@@ -9,7 +9,7 @@
       %th
 
   %tbody
-    - @cart_items.each do |cart_item|
+    - @cart.cart_items.each do |cart_item|
       %tr
         %form{:action => "/cart/update_item", :method => "post"}
           = hidden_field_tag :authenticity_token, form_authenticity_token
@@ -40,3 +40,10 @@
     %tr
       %th 合計
       %td= number_to_currency( @cart.total, :precision => 0, :unit => '￥' )
+
+%br
+/%form{:action => "/order/address_confirm", :method => "post"}
+/  = hidden_field_tag :authenticity_token, form_authenticity_token
+/  = hidden_field_tag :cart_id, @cart.id
+/  %input{:type => "submit", :value => "購入"}
+= link_to '購入', '/order/address_confirm'
